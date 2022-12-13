@@ -1,10 +1,13 @@
 #include"Trainer.h"
 #include"GameObject.h"
+#include"Vector2D.h"
+#include"Point2D.h"
 #include<iostream>
 #include<math.h>
 #include<time.h>
 #include<stdio.h>
 #include<iomanip>
+#include"Model.h"
 
 using namespace std;
 
@@ -575,3 +578,10 @@ PokemonGym* Trainer::GetCurrentGym()
     return current_gym;
 }
 
+void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id)
+{
+    WildPokemonVector.push_back(model -> GetWildPokemonPtr(wildpokemon_id));
+
+    display_code = 't';
+    cout << "WildPokemon " << model -> GetWildPokemonPtr(wildpokemon_id) ->GetName() << " is in combat with Trainer " << model -> GetTrainerPtr(trainer_id) -> GetName() << endl;
+}

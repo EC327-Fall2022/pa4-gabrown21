@@ -4,6 +4,11 @@
 #include"GameObject.h"
 #include"PokemonGym.h"
 #include"PokemonCenter.h"
+#include<iostream>
+#include<vector>
+#include "WildPokemon.h"
+#include "Model.h"
+class Model;
 
 enum TrainerStates {
 STOPPED = 0,
@@ -38,6 +43,7 @@ class Trainer:public GameObject
         PokemonCenter* GetCurrentCenter();
         PokemonGym* GetCurrentGym();
         int GetState();
+        void StartFollowingWildPokemon(Model* model, int, int);
 
     protected:
         bool UpdateLocation();
@@ -53,6 +59,7 @@ class Trainer:public GameObject
         unsigned int battles_to_buy;
         unsigned int potions_to_buy;
         string name;
+        vector<WildPokemon*> WildPokemonVector;
         PokemonCenter* current_center;
         PokemonGym* current_gym;
         Point2D destination;
